@@ -40,7 +40,7 @@ namespace ConsoleApplication1
 				exPath = curDir;
 				Console.WriteLine("Used Path {0}", curDir);
 			}
-
+			getConfig cfg = new getConfig();
 			Console.ReadKey();
 		}
 	}
@@ -73,7 +73,7 @@ namespace ConsoleApplication1
 		}
 
 	}
-	class xmlConfig
+	class getConfig
 	{
 		private List<string> exFilename { get; }
 		private List<bool> exFull { get; }
@@ -83,21 +83,28 @@ namespace ConsoleApplication1
 		private List<int> exFirstCell { get; }
 		private List<int> exLastCell { get; }
 
-		private bool indivSettings { get; } 
+		private bool indivCsvSettings { get; }
+		private bool indivXlsxSettings { get; }
 
 		private List<char> csvDelimetr { get; }
 		private List<char> csvDecDelimetr { get; }
 
-		public xmlConfig()
+		public getConfig()
 		{
-			string defPath = Environment.CurrentDirectory;
-			if (File.Exists((defPath+ @"\setings.xml")))
+			string defPath = (Environment.CurrentDirectory+@"\setings.cfg");
+			try
+			{   // Open the text file using a stream reader.
+				using (StreamReader sr = new StreamReader(defPath))
+				{
+					// Read the stream to a string, and write the string to the console.
+					String line = sr.ReadToEnd();
+					Console.WriteLine(line);
+				}
+			}
+			catch (Exception e)
 			{
-				XmlDocument XMLConfig = new XmlDocument();
-				XMLConfig.
-			} else
-			{
-
+				Console.WriteLine("The file could not be read:");
+				Console.WriteLine(e.Message);
 			}
 		}
 	}
