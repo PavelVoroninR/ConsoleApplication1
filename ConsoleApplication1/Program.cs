@@ -77,7 +77,7 @@ namespace ConsoleApplication1
 	{
 		// отдельный файл
 		private List<string> exFilename { get; }
-		// ???
+		// Читать файл целиком
 		private List<bool> exFull { get; }
 		// Читать все файлы в каталоге
 		private bool exAllFileInDir { get; }
@@ -108,13 +108,27 @@ namespace ConsoleApplication1
 				if (!File.Exists(defPath)) {
 					File.Create(defPath);
 					using (StreamWriter sw = new StreamWriter(defPath)) {
-						string cfgString = "indivXlsxSettings = false\n" +
+						string cfgString = "#This file generated automaticly. Use \"true\" and \n"+
+							"\"false\" for set boolean and letters and number for other. Use 0 for mark infinity" + 
+							"indivXlsxSettings = false\n" +
 							"indivCsvSettings = false\n" +
-							"##Global parametrs:\n" +
+							"#Global parametrs:\n" +
+							"exFull = false\n" + 
 							"exFirstLetter = A\n" +
 							"exLastLetter = I\n" +
 							"exFirstCell = 1\n" +
 							"exLastCell = 0\n" +
+							"csvDelimetr = |" +
+							"csvDecDelimetr = ." +
+							"#Indial settings:" +
+							"exFilename = " +
+							"exFull = true" +
+							"exFirstLetter = A\n" +
+							"exLastLetter = I\n" +
+							"exFirstCell = 1\n" +
+							"exLastCell = 0\n" +
+							"#Indial settings:" +
+
 
 
 
