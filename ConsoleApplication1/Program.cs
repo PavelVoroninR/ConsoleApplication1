@@ -57,33 +57,41 @@ namespace ConsoleApplication1
 
 	class workCode
 	{
-
+		public string Path { get; set; }
 		private List<string> exPath { get; set; }
 		private List<string> bufCellVal = new List<string>();
 		private List<SpreadsheetDocument> exBook;
 		private bool exEdit { get; set; }
 		private bool endDocStream { get; }
 
-		public bool checkIni(string Path)
-		{
-			if (File.Exists(Path))
-			{
+		public bool checkIni(string Path){
+			if (File.Exists(Path)){
 				return true;
-			}
-			else
-			{
+			} else {
+				createIni(Path);
 				return false;
 			}
-
 		}
+		public void delIni(string Path) {
+			if (checkIni(Path)) {
+				File.Delete(Path);
+				System.Windows.Forms.MessageBox.Show("Config file was created with default settins!");
+				createIni(Path);
+			} else {
+				System.Windows.Forms.MessageBox.Show("File not found!");
+				System.Windows.Forms.MessageBox.Show("Config file was created with default settins!");
+				createIni(Path);
+			}
+		}
+		private void createIni(string Path){
+			if (!checkIni(Path)){
+				File.Create(Path);
+				addIniDefaultContent(Path);
+				System.Windows.Forms.MessageBox.Show("Can't found ini file! This File was created automaticly/nFrom path " + Path + "!");
+			}
+		}
+		public void addIniDefaultContent(string Path){
 
-		public void createIni(string Path)
-		{
-			File.Create(Path);
-
-
-
-			System.Windows.Forms.MessageBox.Show("Can't find ini file! This File was created automaticly/nFrom path " + Path + "!");
 		}
 	}
 
