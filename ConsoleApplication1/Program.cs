@@ -62,15 +62,19 @@ namespace ConsoleApplication1
 		private List<string> bufCellVal = new List<string>();
 		private List<SpreadsheetDocument> exBook;
 		private bool exEdit { get; set; }
-		private bool endDocStream {get; }
+		private bool endDocStream { get; }
 
-		public bool checkIni(string Path) {
-			if (File.Exists(Path)) {
+		public bool checkIni(string Path)
+		{
+			if (File.Exists(Path))
+			{
 				return true;
-			} else {
+			}
+			else
+			{
 				return false;
 			}
-			
+
 		}
 
 		public void createIni(string Path)
@@ -79,9 +83,9 @@ namespace ConsoleApplication1
 
 
 
-			System.Windows.Forms.MessageBox.Show("Can't find ini file! This File was created automaticly");
+			System.Windows.Forms.MessageBox.Show("Can't find ini file! This File was created automaticly/nFrom path " + Path + "!");
 		}
-
+	}
 
 
 
